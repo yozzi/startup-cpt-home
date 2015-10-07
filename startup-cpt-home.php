@@ -3,7 +3,7 @@
 Plugin Name: StartUp Home
 Description: Le plugin pour activer le Custom Post Home
 Author: Yann Caplain
-Version: 0.0.1
+Version: 1.0.0
 */
 
 //GitHub Plugin Updater
