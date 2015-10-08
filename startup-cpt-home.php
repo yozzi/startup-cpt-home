@@ -57,7 +57,7 @@ function startup_reloaded_home() {
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
-		'menu_position'       => 5,
+		'menu_position'       => 3,
 		'menu_icon'           => 'dashicons-grid-view',
 		'show_in_admin_bar'   => false,
 		'show_in_nav_menus'   => false,
