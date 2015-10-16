@@ -115,14 +115,11 @@ function startup_reloaded_home_meta() {
 	) );
     
     $cmb_box->add_field( array(
-        'name'    => __( 'Background color', 'cmb2' ),
-        'id'      => $prefix . 'background_color',
-        'type'    => 'colorpicker',
-        'default' => '#fff'
-    ) );
-    
-
-    
+		'name'             => __( 'Display title', 'cmb2' ),
+		'id'               => $prefix . 'title',
+		'type'             => 'checkbox'
+	) );
+        
     $cmb_box->add_field( array(
 		'name'       => __( 'Button text', 'cmb2' ),
 		'id'         => $prefix . 'button_text',
