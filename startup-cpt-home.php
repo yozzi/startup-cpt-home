@@ -140,7 +140,7 @@ function startup_reloaded_home_meta() {
 	) );
 }
 
-add_action( 'cmb2_init', 'startup_reloaded_home_meta' );
+add_action( 'cmb2_admin_init', 'startup_reloaded_home_meta' );
 
 // Shortcode
 function startup_reloaded_home_shortcode( $atts ) {
