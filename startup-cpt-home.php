@@ -181,7 +181,7 @@ function startup_reloaded_home_shortcode( $atts ) {
     } else {
     // Si pas d'attribut
         ob_start();
-        require get_template_directory() . '/inc/shortcodes/home.php';
+        require get_template_directory() . '/template-parts/content-home.php';
         return ob_get_clean();       
     }
 }
