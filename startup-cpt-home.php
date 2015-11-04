@@ -111,31 +111,31 @@ function startup_reloaded_home_meta() {
 
 	$cmb_box = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
-		'title'         => __( 'Home section details', 'cmb2' ),
+		'title'         => __( 'Home section details', 'startup-cpt-home' ),
 		'object_types'  => array( 'home' )
 	) );
     
     $cmb_box->add_field( array(
-		'name'             => __( 'Display title', 'cmb2' ),
+		'name'             => __( 'Display title', 'startup-cpt-home' ),
 		'id'               => $prefix . 'title',
 		'type'             => 'checkbox'
 	) );
         
     $cmb_box->add_field( array(
-		'name'       => __( 'Button text', 'cmb2' ),
+		'name'       => __( 'Button text', 'startup-cpt-home' ),
 		'id'         => $prefix . 'button_text',
 		'type'       => 'text'
 	) );
     
     $cmb_box->add_field( array(
-		'name'       => __( 'Button url', 'cmb2' ),
+		'name'       => __( 'Button url', 'startup-cpt-home' ),
 		'id'         => $prefix . 'button_url',
 		'type'       => 'text'
 	) );
     
     $cmb_box->add_field( array(
-		'name'             => __( 'Button target', 'cmb2' ),
-        'desc'             => __( '_blank', 'cmb2' ),
+		'name'             => __( 'Button target', 'startup-cpt-home' ),
+        'desc'             => __( '_blank', 'startup-cpt-home' ),
 		'id'               => $prefix . 'blank',
 		'type'             => 'checkbox'
 	) );
