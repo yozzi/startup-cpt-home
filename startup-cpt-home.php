@@ -1,9 +1,10 @@
 <?php
 /*
-Plugin Name: StartUp Home
+Plugin Name: StartUp CPT Home
 Description: Le plugin pour activer le Custom Post Home
 Author: Yann Caplain
 Version: 1.0.0
+Text Domain: startup-cpt-home
 */
 
 //GitHub Plugin Updater
