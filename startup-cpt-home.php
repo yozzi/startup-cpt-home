@@ -148,43 +148,14 @@ function startup_reloaded_home_shortcode( $atts ) {
 
 	// Attributes
     $atts = shortcode_atts(array(
-            'id' => 'none',
+            'bg' => '',
+            'id' => ''
         ), $atts);
     
 	// Code
-    if ($atts['id'] != "none"){
-    // Si attribut
-        $home_post = get_post( $atts['id'] );
-        $title = get_post_meta( $home_post->ID, '_startup_reloaded_home_title', true );
-        $button_text = get_post_meta( $home_post->ID, '_startup_reloaded_home_button_text', true );
-        $button_url = get_post_meta( $home_post->ID, '_startup_reloaded_home_button_url', true );
-        $blank = get_post_meta( $home_post->ID, '_startup_reloaded_home_blank', true );
-        ob_start(); ?>
-            <section id="home-<?php echo $atts['id'] ?>">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="home-section">
-                                <?php if ( $title ){ ?><h3><?php echo $home_post->post_title ?></h3><?php } ?>
-                                <p><?php echo $home_post->post_content ?></p>
-                                <?php if ( $button_text ) { ?>
-                                <br />
-                                <a class="btn btn-custom" href="<?php echo $button_url ?>"<?php if ( $blank ) { echo ' target="_blank"'; }?>>
-                                    <?php echo $button_text ?>
-                                </a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        <?php return ob_get_clean();  
-    } else {
-    // Si pas d'attribut
-        ob_start();
-        require get_template_directory() . '/template-parts/content-home.php';
-        return ob_get_clean();       
-    }
+    ob_start();
+    require get_template_directory() . '/template-parts/content-home.php';
+    return ob_get_clean();       
 }
 add_shortcode( 'home', 'startup_reloaded_home_shortcode' );
 ?>
