@@ -34,24 +34,25 @@ add_action( 'init', 'startup_reloaded_home_updater' );
 //CPT
 function startup_reloaded_home() {
 	$labels = array(
-		'name'                => 'Home sections',
-		'singular_name'       => 'Home section',
-		'menu_name'           => 'Home',
-		'name_admin_bar'      => 'Home',
-		'parent_item_colon'   => 'Parent Item:',
-		'all_items'           => 'All Items',
-		'add_new_item'        => 'Add New Item',
-		'add_new'             => 'Add New',
-		'new_item'            => 'New Item',
-		'edit_item'           => 'Edit Item',
-		'update_item'         => 'Update Item',
-		'view_item'           => 'View Item',
-		'search_items'        => 'Search Item',
-		'not_found'           => 'Not found',
-		'not_found_in_trash'  => 'Not found in Trash'
+        'name'                => _x( 'Home sections', 'Post Type General Name', 'startup-cpt-home' ),
+		'singular_name'       => _x( 'Home section', 'Post Type Singular Name', 'startup-cpt-home' ),
+		'menu_name'           => __( 'Home', 'startup-cpt-home' ),
+		'name_admin_bar'      => __( 'Home', 'startup-cpt-home' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'startup-cpt-home' ),
+		'all_items'           => __( 'All Items', 'startup-cpt-home' ),
+		'add_new_item'        => __( 'Add New Item', 'startup-cpt-home' ),
+		'add_new'             => __( 'Add New', 'startup-cpt-home' ),
+		'new_item'            => __( 'New Item', 'startup-cpt-home' ),
+		'edit_item'           => __( 'Edit Item', 'startup-cpt-home' ),
+		'update_item'         => __( 'Update Item', 'startup-cpt-home' ),
+		'view_item'           => __( 'View Item', 'startup-cpt-home' ),
+		'search_items'        => __( 'Search Item', 'startup-cpt-home' ),
+		'not_found'           => __( 'Not found', 'startup-cpt-home' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'startup-cpt-home' )
 	);
 	$args = array(
-		'label'               => 'home',
+        'label'               => __( 'home', 'startup-cpt-home' ),
+        'description'         => __( '', 'startup-cpt-home' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions' ),
 		'hierarchical'        => true,
