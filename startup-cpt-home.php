@@ -159,4 +159,11 @@ function startup_reloaded_home_shortcode( $atts ) {
     return ob_get_clean();       
 }
 add_shortcode( 'home', 'startup_reloaded_home_shortcode' );
+
+// Enqueue scripts and styles.
+function startup_cpt_home_scripts() {
+    wp_enqueue_style( 'startup-cpt-home-style', plugins_url( '/css/startup-cpt-home.css', __FILE__ ), array( ), false, 'all' );
+}
+
+add_action( 'wp_enqueue_scripts', 'startup_cpt_home_scripts' );
 ?>
