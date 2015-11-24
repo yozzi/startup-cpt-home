@@ -7,6 +7,11 @@ Version: 1.0.0
 Text Domain: startup-cpt-home
 */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 //GitHub Plugin Updater
 function startup_reloaded_home_updater() {
 	include_once 'lib/updater.php';
