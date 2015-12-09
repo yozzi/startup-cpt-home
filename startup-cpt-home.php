@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 //GitHub Plugin Updater
-function startup_reloaded_home_updater() {
+function startup_cpt_home_updater() {
 	include_once 'lib/updater.php';
 	//define( 'WP_GITHUB_FORCE_UPDATE', true );
 	if ( is_admin() ) {
@@ -34,10 +34,10 @@ function startup_reloaded_home_updater() {
 	}
 }
 
-//add_action( 'init', 'startup_reloaded_home_updater' );
+//add_action( 'init', 'startup_cpt_home_updater' );
 
 //CPT
-function startup_reloaded_home() {
+function startup_cpt_home() {
 	$labels = array(
         'name'                => _x( 'Home sections', 'Post Type General Name', 'startup-cpt-home' ),
 		'singular_name'       => _x( 'Home section', 'Post Type Singular Name', 'startup-cpt-home' ),
@@ -79,18 +79,18 @@ function startup_reloaded_home() {
 
 }
 
-add_action( 'init', 'startup_reloaded_home', 0 );
+add_action( 'init', 'startup_cpt_home', 0 );
 
 //Flusher les permalink à l'activation du plugin pour qu'ils fonctionnent sans mise à jour manuelle
-function startup_reloaded_home_rewrite_flush() {
-    startup_reloaded_home();
+function startup_cpt_home_rewrite_flush() {
+    startup_cpt_home();
     flush_rewrite_rules();
 }
 
-register_activation_hook( __FILE__, 'startup_reloaded_home_rewrite_flush' );
+register_activation_hook( __FILE__, 'startup_cpt_home_rewrite_flush' );
 
 // Capabilities
-function startup_reloaded_home_caps() {
+function startup_cpt_home_caps() {
 	$role_admin = get_role( 'administrator' );
 	$role_admin->add_cap( 'edit_home_section' );
 	$role_admin->add_cap( 'read_home_section' );
@@ -107,13 +107,13 @@ function startup_reloaded_home_caps() {
 	$role_admin->add_cap( 'edit_published_home_sections' );
 }
 
-register_activation_hook( __FILE__, 'startup_reloaded_home_caps' );
+register_activation_hook( __FILE__, 'startup_cpt_home_caps' );
 
 // Metaboxes
 
-function startup_reloaded_home_meta() {
+function startup_cpt_home_meta() {
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_startup_reloaded_home_';
+	$prefix = '_startup_cpt_home_';
 
 	$cmb_box = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
@@ -147,10 +147,10 @@ function startup_reloaded_home_meta() {
 	) );
 }
 
-add_action( 'cmb2_admin_init', 'startup_reloaded_home_meta' );
+add_action( 'cmb2_admin_init', 'startup_cpt_home_meta' );
 
 // Shortcode
-function startup_reloaded_home_shortcode( $atts ) {
+function startup_cpt_home_shortcode( $atts ) {
 
 	// Attributes
     $atts = shortcode_atts(array(
@@ -163,7 +163,56 @@ function startup_reloaded_home_shortcode( $atts ) {
     require get_template_directory() . '/template-parts/content-home.php';
     return ob_get_clean();       
 }
-add_shortcode( 'home', 'startup_reloaded_home_shortcode' );
+add_shortcode( 'home', 'startup_cpt_home_shortcode' );
+
+// Shortcode UI
+/**
+ * Detecion de Shortcake. Identique dans tous les plugins.
+ */
+if ( !function_exists( 'shortcode_ui_detection' ) ) {
+    function shortcode_ui_detection() {
+        if ( !function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+            add_action( 'admin_notices', 'shortcode_ui_notice' );
+        }
+    }
+
+    function shortcode_ui_notice() {
+        if ( current_user_can( 'activate_plugins' ) ) {
+            echo '<div class="error message"><p>Shortcode UI plugin must be active to use fast shortcodes.</p></div>';
+        }
+    }
+
+add_action( 'init', 'shortcode_ui_detection' );
+}
+
+function startup_cpt_home_shortcode_ui() {
+
+    shortcode_ui_register_for_shortcode(
+        'home',
+        array(
+            'label' => esc_html__( 'Home sections', 'startup-cpt-home' ),
+            'listItemImage' => 'dashicons-grid-view',
+            'attrs' => array(
+                array(
+                    'label' => esc_html__( 'Background', 'startup-cpt-home' ),
+                    'attr'  => 'bg',
+                    'type'  => 'color',
+                ),
+                array(
+                    'label'       => esc_html__( 'ID', 'startup-cpt-home' ),
+                    'attr'        => 'id',
+					'type' => 'post_select',
+					'query' => array( 'post_type' => 'home' ),
+					'multiple' => false,
+                ),
+            ),
+        )
+    );
+};
+
+if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
+    add_action( 'init', 'startup_cpt_home_shortcode_ui');
+}
 
 // Enqueue scripts and styles.
 function startup_cpt_home_scripts() {
