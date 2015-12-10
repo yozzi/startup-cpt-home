@@ -190,7 +190,7 @@ function startup_cpt_home_shortcode_ui() {
     shortcode_ui_register_for_shortcode(
         'home',
         array(
-            'label' => esc_html__( 'Home sections', 'startup-cpt-home' ),
+            'label' => esc_html__( 'Home', 'startup-cpt-home' ),
             'listItemImage' => 'dashicons-grid-view',
             'attrs' => array(
                 array(
