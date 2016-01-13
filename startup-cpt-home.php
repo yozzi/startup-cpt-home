@@ -182,7 +182,7 @@ if ( !function_exists( 'shortcode_ui_detection' ) ) {
         }
     }
 
-add_action( 'init', 'shortcode_ui_detection' );
+    add_action( 'init', 'shortcode_ui_detection' );
 }
 
 function startup_cpt_home_shortcode_ui() {
