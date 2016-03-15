@@ -5,3 +5,7 @@
 #home {
     text-align: justify;
 }
+
+#home .home-section{
+    padding-bottom: 20px;
+}
